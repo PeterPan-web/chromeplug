@@ -1,0 +1,90 @@
+<div id="__mtBP_configure_container">
+    <div>
+        <input class="__mtBP_configure_btn __mtBP_configure_btn-primary" v-if="!finished" @click="finish()" type="button" value="完成">
+        <input class="__mtBP_configure_btn __mtBP_configure_btn-primary" v-if="finished" @click="back()" type="button" value="返回">
+        <!-- <input class="__mtBP_configure_btn __mtBP_configure_btn-primary" v-if="finished" @click="finish()" type="button" value="抓取"> -->
+        <input class="__mtBP_configure_btn __mtBP_configure_btn-primary" v-if="finished" @click="exportdata()" type="button" value="导出数据">
+    </div>
+    <div>
+        <ul class="__mtBP_configure_fold">
+            <li class="__mtBP_configure_item">
+                <h4>导出数据<b>+</b></h4>
+                <div class="__mtBP_configure_info">
+                    <div style="padding: 10px;">
+                        <div>保存类型</div>
+                        <div>
+                            <span>
+                                <span>Markdown</span>
+                            <span>
+                                    <input type="radio" v-model="save_type" value="markdown" />
+                                </span>
+                            </span>
+                            <span>
+                                <span>Excel</span>
+                            <span>
+                                    <input type="radio" v-model="save_type" value="excel" />
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="__mtBP_configure_item">
+                <h4 class="selected">内容<b>-</b></h4>
+                <div class="__mtBP_configure_info" style="display: block;">
+                    <div v-if="selectedElList.length>0">
+                        <div class="__mtBP_configure_row_title">
+                            <div>列名</div>
+                            <div>内容类型</div>
+                        </div>
+                        <div class="__mtBP_configure_rows" v-for="(item, index) in selectedElList" :key="index">
+                            <div class="__mtBP_configure_row">
+                                <div class="__mtBP_configure_row_text">
+                                    <input type="text" placeholder="输入列名" v-model="item.name" class="__mtBP_configure_input-text">
+                                </div>
+                                <div class="__mtBP_configure_row_text">
+                                    <select v-model="item.selectType" class="__mtBP_configure_select">
+                                        <option value="text">文本</option>
+                                        <option value="label">标签</option>
+                                    </select>
+                                </div>
+                                <div class="__mtBP_configure_row_text">
+                                    <div>
+                                        <input type="checkbox" v-model="item.is_exclude_el" @click="excludeElChkClk(index)" />排除内部元素
+                                    </div>
+                                    <div style="line-height: 10px;">
+                                        <a v-if="item.is_exclude_el&&!isSelectedExcludeEl" @click="beginSelectExcludeEl(index)">选择元素</a>
+                                        <a v-if="item.is_exclude_el&&currentItemIndex==index&&isSelectedExcludeEl" @click="endSelectExcludeEl()">停止选择元素</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="actions">
+                                <span @click="del(index)">x</span>
+                                <span @click="move(index,-1)" v-show="index>=1">上移</span>
+                                <span @click="move(index,1)" v-show="index<selectedElList.length-1">下移</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div v-if="selectedElList.length==0" style="text-align: center; margin: 10px; font-size: 16px;">您还没有设置要抓取内容</div>
+                </div>
+            </li>
+            <li class="__mtBP_configure_item" v-show="excludeEls.length>0">
+                <h4>排除元素<b>-</b></h4>
+                <div class="__mtBP_configure_info" style="display: block;">
+                    <div class="__mtBP_configure_rows" v-for="(items, index) in selectedElList" :key="index" v-if="items.is_exclude_el">
+                        <div class="__mtBP_configure_row_text">
+                            列名：{{items.name}}
+                        </div>
+                        <div>
+                            <div>排除元素列表：</div>
+                            <div class="actions" v-for="(item, i) in items.exclude_els" :key="i">
+                                <div class="__mtBP_configure_exclude_el">{{item}}</div>
+                                <span @click="delExcludeEl(i,index)" title="删除">x</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

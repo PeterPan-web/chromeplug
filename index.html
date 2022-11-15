@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>元素选择器</title>
+  <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+</head>
+
+<body>
+  <div>
+    <button id="btnSave">保存</button>
+    <input type="text" value="输入姓名"/>
+    <a href="https://www.baidu.com">www.baidu.com</a>
+    <select>
+      <option value="h1">h1</option>
+      <option value="h1">h2</option>
+      <option value="h1">h3</option>
+      <option value="h1">h4</option>
+    </select>
+  </div>
+  <!--测试数据-->
+  <div>
+    <div class="condition">
+      <div class="filter_options clearfix">
+        <ol class="clearfix">
+          <label><strong style="margin-right: 3px">区域：</strong><a name="region" href="/esfall" id="R0" class="bg">不限</a></label>
+          <ul class="clearfix" id="disregion">
+
+            <li><a onclick="ga('send', 'event', 'quanbuershoufangshaixuan', 'quyu', '1级区域_昌平');" href="/esfall/R1" id="R1" name="region">昌平</a></li>
+
+            <li><a onclick="ga('send', 'event', 'quanbuershoufangshaixuan', 'quyu', '1级区域_朝阳');" href="/esfall/R2" id="R2" name="region">朝阳</a></li>
+
+            <li><a onclick="ga('send', 'event', 'quanbuershoufangshaixuan', 'quyu', '1级区域_东城');" href="/esfall/R3" id="R3" name="region">东城</a></li>
+
+            <li><a onclick="ga('send', 'event', 'quanbuershoufangshaixuan', 'quyu', '1级区域_大兴');" href="/esfall/R4" id="R4" name="region">大兴</a></li>
+
+            <li><a onclick="ga('send', 'event', 'quanbuershoufangshaixuan', 'quyu', '1级区域_房山');" href="/esfall/R12" id="R12" name="region">房山</a></li>
+
+            <li><a onclick="ga('send', 'event', 'quanbuershoufangshaixuan', 'quyu', '1级区域_丰台');" href="/esfall/R5" id="R5" name="region">丰台</a></li>
+
+            <li><a onclick="ga('send', 'event', 'quanbuershoufangshaixuan', 'quyu', '1级区域_海淀');" href="/esfall/R6" id="R6" name="region">海淀</a></li>
+
+            <li><a onclick="ga('send', 'event', 'quanbuershoufangshaixuan', 'quyu', '1级区域_门头沟');" href="/esfall/R14" id="R14" name="region">门头沟</a></li>
+
+            <li><a onclick="ga('send', 'event', 'quanbuershoufangshaixuan', 'quyu', '1级区域_平谷');" href="/esfall/R13" id="R13" name="region">平谷</a></li>
+
+            <li><a onclick="ga('send', 'event', 'quanbuershoufangshaixuan', 'quyu', '1级区域_石景山');" href="/esfall/R10" id="R10" name="region">石景山</a></li>
+
+            <li><a onclick="ga('send', 'event', 'quanbuershoufangshaixuan', 'quyu', '1级区域_顺义');" href="/esfall/R11" id="R11" name="region">顺义</a></li>
+
+            <li><a onclick="ga('send', 'event', 'quanbuershoufangshaixuan', 'quyu', '1级区域_通州');" href="/esfall/R9" id="R9" name="region">通州</a></li>
+
+            <li><a onclick="ga('send', 'event', 'quanbuershoufangshaixuan', 'quyu', '1级区域_西城');" href="/esfall/R7" id="R7" name="region">西城</a></li>
+
+          </ul>
+        </ol>
+        <!----------商圈 start---------->
+        <div class="panesa" id="idCycle" style="display: none;">
+        </div>
+        <!----------商圈 end---------->
+        <div class="clear"></div>
+      </div>
+      <div class="filter_options clearfix">
+        <label>
+          <strong>售价：</strong>
+          <a onclick="ga('send', 'event', 'quanbuershoufangshaixuan', 'shoujia', '售价_不限');" href="/esfall" id="S0" class="bg">不限</a>
+        </label>
+        <ul class="three clearfix">
+
+          <li>
+            <a onclick="ga('send', 'event', 'quanbuershoufangshaixuan', 'shoujia', '售价_200万以下');" href="/esfall/S1" id="S1">200万以下</a>
+          </li>
+
+          <li>
+            <a onclick="ga('send', 'event', 'quanbuershoufangshaixuan', 'shoujia', '售价_200-300万');" href="/esfall/S2" id="S2">200-300万</a>
+          </li>
+
+          <li>
+            <a onclick="ga('send', 'event', 'quanbuershoufangshaixuan', 'shoujia', '售价_300-400万');" href="/esfall/S3" id="S3">300-400万</a>
+          </li>
+
+          <li>
+            <a onclick="ga('send', 'event', 'quanbuershoufangshaixuan', 'shoujia', '售价_400-600万');" href="/esfall/S4" id="S4">400-600万</a>
+          </li>
+
+          <li>
+            <a onclick="ga('send', 'event', 'quanbuershoufangshaixuan', 'shoujia', '售价_600-800万');" href="/esfall/S5" id="S5">600-800万</a>
+          </li>
+
+          <li>
+            <a onclick="ga('send', 'event', 'quanbuershoufangshaixuan', 'shoujia', '售价_800万以上');" href="/esfall/S6" id="S6">800万以上</a>
+          </li>
+
+        </ul>
+        <section class="input_section"><input class="checkNum" id="SB" type="text" min="0" max="999999999" onkeyup="value = value.replace(/[^\d]/g, '')" value=""> - <input class="checkNum" id="SE" type="text" min="0" max="999999999" onkeyup="value = value.replace(/[^\d]/g, '')" value="">&nbsp;万<button id="Sbtn">确定</button></section>
+        <div class="clear"></div>
+      </div>
+      <div class="filter_options clearfix">
+        <label>
+          <strong>面积：</strong>
+          <a onclick="ga('send', 'event', 'quanbuershoufangshaixuan', 'mianji', '面积_不限');" href="/esfall" id="A0" class="bg">不限</a>
+        </label>
+        <ul class="three clearfix">
+
+          <li>
+            <a onclick="ga('send', 'event', 'quanbuershoufangshaixuan', 'mianji', '面积_50平以下');" href="/esfall/A1" id="A1">50平以下</a>
+          </li>
+
+          <li>
+            <a onclick="ga('send', 'event', 'quanbuershoufangshaixuan', 'mianji', '面积_50-70平');" href="/esfall/A2" id="A2">50-70平</a>
+          </li>
+
+          <li>
+            <a onclick="ga('send', 'event', 'quanbuershoufangshaixuan', 'mianji', '面积_70-90平');" href="/esfall/A3" id="A3">70-90平</a>
+          </li>
+
+          <li>
+            <a onclick="ga('send', 'event', 'quanbuershoufangshaixuan', 'mianji', '面积_90-110平');" href="/esfall/A4" id="A4">90-110平</a>
+          </li>
+
+          <li>
+            <a onclick="ga('send', 'event', 'quanbuershoufangshaixuan', 'mianji', '面积_110-130平');" href="/esfall/A5" id="A5">110-130平</a>
+          </li>
+
+          <li>
+            <a onclick="ga('send', 'event', 'quanbuershoufangshaixuan', 'mianji', '面积_130-150平');" href="/esfall/A6" id="A6">130-150平</a>
+          </li>
+
+          <li>
+            <a onclick="ga('send', 'event', 'quanbuershoufangshaixuan', 'mianji', '面积_150平以上');" href="/esfall/A7" id="A7">150平以上</a>
+          </li>
+
+        </ul>
+        <section class="input_section"><input type="text" id="AB" class="checkNum bg" min="0" max="999999999" onkeyup="value = value.replace(/[^\d]/g, '')" value=""> - <input class="checkNum bg" id="AE" type="text" min="0" max="999999999" onkeyup="value = value.replace(/[^\d]/g, '')" value="">&nbsp;平米<button id="Abtn">确定</button></section>
+        <div class="clear"></div>
+      </div>
+      <div class="filter_options clearfix">
+        <label>
+          <strong>户型：</strong>
+          <a onclick="ga('send', 'event', 'quanbuershoufangshaixuan', 'huxing', '户型_不限');" href="/esfall" id="H0" class="bg">不限</a>
+        </label>
+        <ul class="clearfix">
+
+          <li><a onclick="ga('send', 'event', 'quanbuershoufangshaixuan', 'huxing', '户型_一室');" href="/esfall/H1" id="H1">一室</a></li>
+
+          <li><a onclick="ga('send', 'event', 'quanbuershoufangshaixuan', 'huxing', '户型_二室');" href="/esfall/H2" id="H2">二室</a></li>
+
+          <li><a onclick="ga('send', 'event', 'quanbuershoufangshaixuan', 'huxing', '户型_三室');" href="/esfall/H3" id="H3">三室</a></li>
+
+          <li><a onclick="ga('send', 'event', 'quanbuershoufangshaixuan', 'huxing', '户型_四室');" href="/esfall/H4" id="H4">四室</a></li>
+
+          <li><a onclick="ga('send', 'event', 'quanbuershoufangshaixuan', 'huxing', '户型_五室及以上');" href="/esfall/H5" id="H5">五室及以上</a></li>
+
+        </ul>
+        <div class="clear"></div>
+      </div>
+      <div class="filter_options clearfix">
+        <label>
+          <strong>朝向：</strong>
+          <a onclick="ga('send', 'event', 'quanbuershoufangshaixuan', 'chaoxiang', '朝向_不限');" href="/esfall" id="O0" class="bg">不限</a>
+        </label>
+        <ul class="clearfix">
+
+          <li>
+            <a onclick="ga('send', 'event', 'quanbuershoufangshaixuan', 'chaoxiang', '朝向_东');" href="/esfall/O1" id="O1">东</a>
+          </li>
+
+          <li>
+            <a onclick="ga('send', 'event', 'quanbuershoufangshaixuan', 'chaoxiang', '朝向_南');" href="/esfall/O2" id="O2">南</a>
+          </li>
+
+          <li>
+            <a onclick="ga('send', 'event', 'quanbuershoufangshaixuan', 'chaoxiang', '朝向_西');" href="/esfall/O3" id="O3">西</a>
+          </li>
+
+          <li>
+            <a onclick="ga('send', 'event', 'quanbuershoufangshaixuan', 'chaoxiang', '朝向_北');" href="/esfall/O4" id="O4">北</a>
+          </li>
+
+          <li>
+            <a onclick="ga('send', 'event', 'quanbuershoufangshaixuan', 'chaoxiang', '朝向_南北');" href="/esfall/O5" id="O5">南北</a>
+          </li>
+
+        </ul>
+        <div class="clear"></div>
+      </div>
+      <div class="filter_options clearfix">
+        <label>
+          <strong>卖点：</strong>
+          <a onclick="ga('send', 'event', 'quanbuershoufangshaixuan', 'maidian', '卖点_不限');" href="/esfall" id="T0" class="bg">不限</a>
+        </label>
+        <ul class="three clearfix">
+
+          <li>
+            <a onclick="ga('send', 'event', 'quanbuershoufangshaixuan', 'maidian', '卖点_临近地铁');" href="/esfall/T3" id="T3">临近地铁</a>
+          </li>
+
+          <li>
+            <a onclick="ga('send', 'event', 'quanbuershoufangshaixuan', 'maidian', '卖点_满五');" href="/esfall/T2" id="T2">满五</a>
+          </li>
+
+          <li>
+            <a onclick="ga('send', 'event', 'quanbuershoufangshaixuan', 'maidian', '卖点_随时可看');" href="/esfall/T4" id="T4">随时可看</a>
+          </li>
+
+          <li>
+            <a onclick="ga('send', 'event', 'quanbuershoufangshaixuan', 'maidian', '卖点_带车位');" href="/esfall/T9" id="T9">带车位</a>
+          </li>
+
+          <li>
+            <a onclick="ga('send', 'event', 'quanbuershoufangshaixuan', 'maidian', '卖点_带露台');" href="/esfall/T7" id="T7">带露台</a>
+          </li>
+
+          <li>
+            <a onclick="ga('send', 'event', 'quanbuershoufangshaixuan', 'maidian', '卖点_带飘窗');" href="/esfall/T8" id="T8">带飘窗</a>
+          </li>
+
+        </ul>
+        <div class="clear"></div>
+      </div>
+
+      <div class="filter_options filter_select_box clearfix">
+        <label><strong>筛选：</strong></label>
+
+        <div class="filter_select clearfix selectBox" style="margin-top:5px;">
+          <a href="javascript:;" class="show">楼层</a>
+          <em></em>
+          <div class="filter_sel selectCont filter_sel_L mCustomScrollbar _mCS_2 mCS-autoHide mCS_no_scrollbar" style="overflow: visible;"><div id="mCSB_2" class="mCustomScrollBox mCS-minimal mCSB_vertical mCSB_outside" tabindex="0"><div id="mCSB_2_container" class="mCSB_container mCS_y_hidden mCS_no_scrollbar_y" style="position:relative; top:0; left:0;" dir="ltr">
+            <ul>
+              <li idx="L0" style="padding-left:0px;"> <a onclick="ga('send', 'event', 'quanbuershoufangshaixuan', 'louceng', '楼层_全部');" href="/esfall" id="L0" class="bg">全部</a>   </li>
+
+              <li idx="L1" style="padding-left:0px;">
+                <a onclick="ga('send', 'event', 'quanbuershoufangshaixuan', 'louceng', '楼层_低楼层');" href="/esfall/L1" id="L1">低楼层</a>
+              </li>
+
+              <li idx="L2" style="padding-left:0px;">
+                <a onclick="ga('send', 'event', 'quanbuershoufangshaixuan', 'louceng', '楼层_中楼层');" href="/esfall/L2" id="L2">中楼层</a>
+              </li>
+
+              <li idx="L3" style="padding-left:0px;">
+                <a onclick="ga('send', 'event', 'quanbuershoufangshaixuan', 'louceng', '楼层_高楼层');" href="/esfall/L3" id="L3">高楼层</a>
+              </li>
+
+            </ul>
+          </div></div><div id="mCSB_2_scrollbar_vertical" class="mCSB_scrollTools mCSB_2_scrollbar mCS-minimal mCSB_scrollTools_vertical" style="display: none;"><div class="mCSB_draggerContainer"><div id="mCSB_2_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 50px; top: 0px;" oncontextmenu="return false;"><div class="mCSB_dragger_bar" style="line-height: 50px;"></div></div><div class="mCSB_draggerRail"></div></div></div></div>
+        </div>
+        <div class="clear"></div>
+      </div>
+    </div>
+  </div>
+<!-- built files will be auto injected -->
+</body>
+
+</html>
