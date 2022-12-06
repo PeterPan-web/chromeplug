@@ -3,6 +3,7 @@ import $ from 'jquery'
 import md5 from "md5"
 import layer from "../layer/layer"
 import eventEnum from "./enum/eventEnum"
+import titleEnum from "./enum/titleEnum"
 export default {
     methods: {
         onDomClick() {
@@ -16,6 +17,7 @@ export default {
             let selector=id?'#'+id:(this.selectedEl.className?'.'+this.selectedEl.className.replace(/\s+/g, "."):csspath);
             //创建选中元素的对象
             let item = {
+              titleType:titleEnum.Click,
               identifierFlg: identifierFlg,//唯一标识符，用于后台统计
               cssSelector: selector,//jquery选择器,(ID、类、XPath选择器)
               eleID: id,//元素ID

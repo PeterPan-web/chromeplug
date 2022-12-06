@@ -11,3 +11,4 @@ export default {
   Blur: 'blur',
   Focus: 'focus'
 }
+

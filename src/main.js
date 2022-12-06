@@ -10,8 +10,9 @@ import onclick from './js/onclick';
 import getcsspath from './js/getCsspath';
 import selectedDom from './js/selectedDom';
 import shelter from './js/selector/shelter';
-import bpServer from './js/bpServer'
-import eventTypes from './js/enum/eventEnum'
+import bpServer from './js/bpServer';
+import eventTypes from './js/enum/eventEnum';
+import titleTypes from './js/enum/titleEnum'
 Vue.config.productionTip = false;
 
 let shelterUi = new shelter();
@@ -21,6 +22,7 @@ new Vue({
   mixins: [data, onclick, getcsspath, watch, selectedDom,bpServer],
   data() {
     return {
+      titleTypes:titleTypes,
       eventTypes: eventTypes,
       finished: false, //是否完成配置，配置完成后展示删除服务器按钮
       selectedEl: null, //当前选中的元素
@@ -104,8 +106,8 @@ if (navigator.clipboard) {
       });
     },
     //完成抓取，开始上传服务器
-    finish() {
-      if (this.selectedElList.length == 0) {
+    finish() {      
+  if (this.selectedElList.length == 0) {
         layer.msg("请设置抓取内容", {
           zIndex: 2147483620,
           time: 1000,
@@ -113,8 +115,21 @@ if (navigator.clipboard) {
         });
         return false;
       }
+    let  aaa =  this.selectedElList.some(item=>{
+        return item.titlekey == undefined
+    })
+  if(aaa){
+    layer.msg("请选择文章位置", {
+      zIndex: 2147483620,
+      time: 1000,
+      icon: 2
+    });  
+    return false;
+      }else{
       this.finished = true;
       this.endSelect();
+      }
+
     },
     delAll() {
       let that = this;

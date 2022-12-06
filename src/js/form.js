@@ -17,7 +17,7 @@ export default function(endSelect) {
         closeBtn: 1,
         zIndex: 2147483599,
         title: "内容可视化选择器",
-        offset: ["30px", "30px"],
+        offset: ["40px", "40px"],
         content: template,
         area: [windowWidth*0.4+"px", windowHeight * 0.8 + "px"],
         cancel: function(index) {

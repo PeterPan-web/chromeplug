@@ -18,7 +18,8 @@
                               <th>标签</th>
                               <th>选点标识</th>
                               <th>选点内容</th>
-                              <th>点击按钮复制内容</th>
+                              <th>文章位置</th>
+                              <th>点击复制</th>
                               <th>事件</th>
                               <th>颜色</th>
                               <th>删除</th>
@@ -40,6 +41,15 @@
                                   >
                                   </div>
                                 </td>
+                                <!-- 文章位置选择 -->
+                              <td>
+                                <div class="__mtBP_configure_row_text">
+                                  <select v-model="item.titlekey" class="__mtBP_configure_select">
+                                    <template v-for="titlekey in titleTypes">
+                                      <option :value="titlekey"  @click="copyDoc(item.eleText)">{{titlekey}}</option>
+                                    </template>
+                                  </select>
+                              </td>
                                   <!-- 复制按钮 -->
                               <td>
                                 <div class="__mtBP_configure_row_text">
@@ -51,7 +61,7 @@
                                 <div class="__mtBP_configure_row_text">
                                   <select v-model="item.eventType" class="__mtBP_configure_select">
                                     <template v-for="eventkey in eventTypes">
-                                      <option :value="eventkey">{{eventkey}}</option>
+                                      <option :value="eventkey" >{{eventkey}}</option>
                                     </template>
                                   </select>
                                 </div>
