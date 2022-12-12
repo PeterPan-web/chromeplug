@@ -42,7 +42,7 @@ new Vue({
       //设置选择菜单不为空
      // this.selectedElList= [];
       this.beginSelect();
-      this.mtBpUpload({},function () {
+      this.mtBpUpload(this.selectedElList,function () {
         layer.msg("上传服务器成功", {
           zIndex: 2147483620,
           time: 1000,
@@ -68,6 +68,35 @@ new Vue({
         layer.close(i);
       });
     },
+    //设置专栏类型key
+    changeProduct(event,item) {
+      if(event.target.value=='标题'){
+        item.titlekeycode=0
+      }
+      if(event.target.value=='栏目'){
+        item.titlekeycode=1
+      }
+      if(event.target.value=='图片'){
+        item.titlekeycode=2
+      }
+      if(event.target.value=='音频'){
+        item.titlekeycode=3
+      }
+      if(event.target.value=='视频'){
+        item.titlekeycode=4
+      }
+      if(event.target.value=='日期'){
+        item.titlekeycode=5
+      }
+      if(event.target.value=='作者'){
+        item.titlekeycode=6
+      }
+      if(event.target.value=='正文'){
+        item.titlekeycode=7
+      }
+    },
+
+
     //复制内容点
     copyDoc(data) {
       console.log(data);
@@ -76,6 +105,8 @@ new Vue({
         time: 1000,
         icon: 1
       });
+
+      
 if (navigator.clipboard) {
     // clipboard api 复制
     navigator.clipboard.writeText(data);
@@ -178,6 +209,13 @@ if (navigator.clipboard) {
     });
   },
   mounted() {
+    if (window.location.protocol!=='http:') {
+        layer.msg("该页面无法上传数据", {
+          zIndex: 2147483630,
+          time: 3000,
+          icon: 2
+        });
+    }
     this.beginSelect();
     $(".__mtBP_configure_item h4").bind("click", function() {
       if ($(this).next().is(":visible")) {

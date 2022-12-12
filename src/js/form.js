@@ -16,7 +16,7 @@ export default function(endSelect) {
         maxmin: true,
         closeBtn: 1,
         zIndex: 2147483599,
-        title: "内容可视化选择器",
+        title: "互联网信息采集器",
         offset: ["40px", "40px"],
         content: template,
         area: [windowWidth*0.4+"px", windowHeight * 0.8 + "px"],
@@ -26,7 +26,7 @@ export default function(endSelect) {
                 layer.close(_confirmLayer);
             }
             _confirmLayer = layer.confirm(
-                "关闭可视化选择器？", {
+                "关闭互联网信息采集器？", {
                     icon: 0,
                     title: "信息",
                     zIndex: 2147483615

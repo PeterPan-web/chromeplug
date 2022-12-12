@@ -1,7 +1,7 @@
 export default {
     data() {
         return {
-            mtBpServerUrl: "http://localhost:13012/",
+            mtBpServerUrl: "http://192.168.31.111:8082/",
             selectAttr: "__mtBP_select",
             rowClass: "__mtBP_selectrow",
             colorIndex: 0, //选中元素的颜色索引

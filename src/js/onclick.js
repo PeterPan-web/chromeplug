@@ -17,6 +17,7 @@ export default {
             let selector=id?'#'+id:(this.selectedEl.className?'.'+this.selectedEl.className.replace(/\s+/g, "."):csspath);
             //创建选中元素的对象
             let item = {
+              titlekeycode:'',//栏目对应的code
               titleType:titleEnum.Click,
               identifierFlg: identifierFlg,//唯一标识符，用于后台统计
               cssSelector: selector,//jquery选择器,(ID、类、XPath选择器)

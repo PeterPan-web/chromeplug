@@ -19,7 +19,7 @@
                               <th>选点标识</th>
                               <th>选点内容</th>
                               <th>文章位置</th>
-                              <th>点击复制</th>
+                              <!-- <th>点击复制</th> -->
                               <th>事件</th>
                               <th>颜色</th>
                               <th>删除</th>
@@ -44,19 +44,19 @@
                                 <!-- 文章位置选择 -->
                               <td>
                                 <div class="__mtBP_configure_row_text">
-                                  <select v-model="item.titlekey" class="__mtBP_configure_select">
+                                  <select v-model="item.titlekey" class="__mtBP_configure_select"  @change="changeProduct($event,item)">
                                     <template v-for="titlekey in titleTypes">
-                                      <option :value="titlekey"  @click="copyDoc(item.eleText)">{{titlekey}}</option>
+                                      <option :value="titlekey">{{titlekey}}</option>
                                     </template>
                                   </select>
                               </td>
                                   <!-- 复制按钮 -->
-                              <td>
-                                <div class="__mtBP_configure_row_text">
+                              <!-- <td>
+                                <div class="__mtBP_configure_row_text"> -->
                                   <!-- <input type="text" placeholder="输入元素选择器" v-model="item.cssSelector" class="__mtBP_configure_input-text"> -->
-                                  <button @click="copyDoc(item.eleText)">复制按钮</button>
+                                  <!-- <button @click="copyDoc(item.eleText)">复制按钮</button>
                                 </div>
-                              </td>
+                              </td> -->
                               <td>
                                 <div class="__mtBP_configure_row_text">
                                   <select v-model="item.eventType" class="__mtBP_configure_select">
