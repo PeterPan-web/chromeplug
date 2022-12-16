@@ -17,15 +17,15 @@ export default {
             let selector=id?'#'+id:(this.selectedEl.className?'.'+this.selectedEl.className.replace(/\s+/g, "."):csspath);
             //创建选中元素的对象
             let item = {
-              titlekeycode:'',//栏目对应的code
+              cssSelector: selector,//jquery选择器,(ID、类、XPath选择器)
+              titleKeyCode:'',//栏目对应的code
+              eleClass: this.selectedEl.className,//元素Class
+              eleID: id,//元素ID
+              tagName: this.selectedEl.tagName,//元素Tag
               titleType:titleEnum.Click,
               identifierFlg: identifierFlg,//唯一标识符，用于后台统计
-              cssSelector: selector,//jquery选择器,(ID、类、XPath选择器)
-              eleID: id,//元素ID
-              eleClass: this.selectedEl.className,//元素Class
               eleName: $sls.attr('name'),//元素Name
               eleText: $sls.text(),
-              tagName: this.selectedEl.tagName,//元素Tag
               path: csspath, //csspath
               color: color, //选中后的颜色
               eventType: eventEnum.Click,//内容选择上传事件类型

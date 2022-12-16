@@ -71,28 +71,28 @@ new Vue({
     //设置专栏类型key
     changeProduct(event,item) {
       if(event.target.value=='标题'){
-        item.titlekeycode=0
+        item.titleKeyCode=0
       }
       if(event.target.value=='栏目'){
-        item.titlekeycode=1
+        item.titleKeyCode=1
       }
       if(event.target.value=='图片'){
-        item.titlekeycode=2
+        item.titleKeyCode=2
       }
       if(event.target.value=='音频'){
-        item.titlekeycode=3
+        item.titleKeyCode=3
       }
       if(event.target.value=='视频'){
-        item.titlekeycode=4
+        item.titleKeyCode=4
       }
       if(event.target.value=='日期'){
-        item.titlekeycode=5
+        item.titleKeyCode=5
       }
       if(event.target.value=='作者'){
-        item.titlekeycode=6
+        item.titleKeyCode=6
       }
       if(event.target.value=='正文'){
-        item.titlekeycode=7
+        item.titleKeyCode=7
       }
     },
 
@@ -147,7 +147,7 @@ if (navigator.clipboard) {
         return false;
       }
     let  aaa =  this.selectedElList.some(item=>{
-        return item.titlekey == undefined
+        return item.titleKey == undefined
     })
   if(aaa){
     layer.msg("请选择文章位置", {

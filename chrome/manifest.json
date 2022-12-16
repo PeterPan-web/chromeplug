@@ -4,7 +4,7 @@
     },
     "browser_action": {
         "default_icon": "./icons/icon.png",
-        "default_title": "内容选择器"
+        "default_title": "互联网信息采集器"
     },
     "content_scripts": [{
         "js": ["js/connector.js"],// 注入到匹配的Web页面中的JS文件，顺序相关
@@ -20,9 +20,9 @@
         "16": "./icons/16.png",
         "48": "./icons/48.png"
     },
-    "description": "内容选择器，快速选择元素上传到服务器。",
+    "description": "互联网信息采集器，快速选择元素上传到服务器。",
     "manifest_version": 2,
-    "name": "内容选择器",
+    "name": "互联网信息采集器",
     "permissions": ["cookies", "tabs", "notifications", "background", "contextMenus", "*://*/*"],
     "version": "1.0.0",
     "web_accessible_resources": ["*", "*/*"]

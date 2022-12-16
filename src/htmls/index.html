@@ -16,11 +16,11 @@
                             <tr style="line-height:32px;border-bottom:1px dotted #ccc;margin-bottom: 2px;">
                               <th>序号</th>
                               <th>标签</th>
-                              <th>选点标识</th>
-                              <th>选点内容</th>
+                              <!-- <th>选点标识</th> -->
+                              <th >选点内容</th>
                               <th>文章位置</th>
                               <!-- <th>点击复制</th> -->
-                              <th>事件</th>
+                              <!-- <th>事件</th> -->
                               <th>颜色</th>
                               <th>删除</th>
                             </tr>
@@ -29,11 +29,11 @@
                             <tr class="__mtBP_configure_rows" v-for="(item, index) in selectedElList" :key="index">
                               <td>{{index}}</td>
                               <td>{{item.tagName}}</td>
-                              <td>
+                              <!-- <td>
                                 <div class="__mtBP_configure_row_text">
                                   <input type="text" placeholder="输入内容标识符" v-model="item.identifierFlg" class="__mtBP_configure_input-text">
                                 </div>
-                              </td>
+                              </td> -->
                               <!-- 选择器内容 -->
                               <td>
                                 <div class="__mtBP_configure_row_text">
@@ -44,9 +44,9 @@
                                 <!-- 文章位置选择 -->
                               <td>
                                 <div class="__mtBP_configure_row_text">
-                                  <select v-model="item.titlekey" class="__mtBP_configure_select"  @change="changeProduct($event,item)">
-                                    <template v-for="titlekey in titleTypes">
-                                      <option :value="titlekey">{{titlekey}}</option>
+                                  <select v-model="item.titleKey" class="__mtBP_configure_select"  @change="changeProduct($event,item)">
+                                    <template v-for="titleKey in titleTypes">
+                                      <option :value="titleKey">{{titleKey}}</option>
                                     </template>
                                   </select>
                               </td>
@@ -57,7 +57,7 @@
                                   <!-- <button @click="copyDoc(item.eleText)">复制按钮</button>
                                 </div>
                               </td> -->
-                              <td>
+                              <!-- <td>
                                 <div class="__mtBP_configure_row_text">
                                   <select v-model="item.eventType" class="__mtBP_configure_select">
                                     <template v-for="eventkey in eventTypes">
@@ -65,7 +65,7 @@
                                     </template>
                                   </select>
                                 </div>
-                              </td>
+                              </td> -->
                               <td  >
                                 <div class="__mtBP_configure_row_text" :style="'background-color:'+ item.color">
                                   &nbsp;&nbsp;&nbsp;
