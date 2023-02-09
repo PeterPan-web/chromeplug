@@ -1,6 +1,7 @@
 export default {
     data() {
         return {
+          //在上传页修改  这里无用
             mtBpServerUrl: "http://192.168.31.111:8082/",
             selectAttr: "__mtBP_select",
             rowClass: "__mtBP_selectrow",

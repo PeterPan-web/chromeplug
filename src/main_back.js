@@ -141,6 +141,7 @@ new Vue({
       // this.endSelect();
      
     },
+
     finish() {
       if (this.selectedElList.length == 0) {
         layer.msg("请设置抓取内容", {

@@ -1,63 +1,83 @@
 <div id="__mtBP_configure_container">
-    <div>
-        <input class="__mtBP_configure_btn __mtBP_configure_btn-primary" v-if="!finished" @click="finish()" type="button" value="完成">
-        <input class="__mtBP_configure_btn __mtBP_configure_btn-primary"  style="position:absolute;right: 12px;" @click="delAll" type="button" value="清空">
-        <input class="__mtBP_configure_btn __mtBP_configure_btn-primary" v-if="finished" @click="back()" type="button" value="返回">
-        <input class="__mtBP_configure_btn __mtBP_configure_btn-primary" v-if="finished" @click="uploaddata()" type="button" value="上传内容">
-    </div>
-    <div>
-        <ul class="__mtBP_configure_fold">
-            <li class="__mtBP_configure_item">
-                <h4 class="selected">选择<b>-</b></h4>
-                <div class="__mtBP_configure_info" style="display: block;">
-                    <div v-if="selectedElList.length>0">
-                        <table style="width:100%;">
-                          <thead>
-                            <tr style="line-height:32px;border-bottom:1px dotted #ccc;margin-bottom: 2px;">
-                              <th>序号</th>
-                              <th>标签</th>
-                              <!-- <th>选点标识</th> -->
-                              <th >选点内容</th>
-                              <th>文章位置</th>
-                              <!-- <th>点击复制</th> -->
-                              <!-- <th>事件</th> -->
-                              <th>颜色</th>
-                              <th>删除</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr class="__mtBP_configure_rows" v-for="(item, index) in selectedElList" :key="index">
-                              <td>{{index}}</td>
-                              <td>{{item.tagName}}</td>
-                              <!-- <td>
+  <div v-if="!ipfind" >
+   <input class="__mtBP_configure_btn __mtBP_configure_btn-primary" @click="changeip1()" type="button" value="修改ip" > 
+   <input type="text" :value="needip" style="height: 30px;position: absolute;left: 80px; top: 10px;width: 150px;" id="input1">
+   <input class="__mtBP_configure_btn __mtBP_configure_btn-primary" @click="changeip2()" type="button" value="修改端口"style="position: absolute;left: 250px; " > 
+   <input type="text" :value="neednum" style="height: 30px;position: absolute;left: 320px; top: 10px;width: 60px;" id="input2">
+    
+    <input class="__mtBP_configure_btn __mtBP_configure_btn-primary" @click="ippost()" type="button" style="position: absolute;right: 12px;"
+      value="确认">
+  </div>
+  <div v-if=" ipfind">
+    <input class="__mtBP_configure_btn __mtBP_configure_btn-primary" v-if="!finished" @click="finish()" type="button"
+      value="完成">
+    <input class="__mtBP_configure_btn __mtBP_configure_btn-primary" style="position:absolute;right: 12px;"
+      @click="delAll" type="button" value="清空">
+    <input class="__mtBP_configure_btn __mtBP_configure_btn-primary" v-if="finished" @click="back()" type="button"
+      value="返回">
+    <input class="__mtBP_configure_btn __mtBP_configure_btn-primary" v-if="finished" @click="uploaddata()" type="button"
+      value="上传内容">
+  </div>
+  <div>
+    <ul class="__mtBP_configure_fold">
+      <li class="__mtBP_configure_item">
+        <h4 class="selected">选择<b>-</b></h4>
+        <div class="__mtBP_configure_info" style="display: block;">
+          <div v-if="selectedElList.length>0">
+            <table style="width:100%;">
+              <thead>
+                <tr style="line-height:32px;border-bottom:1px dotted #ccc;margin-bottom: 2px;">
+                  <th>序号</th>
+                  <th>标签</th>
+                  <th>CSS选择器</th>
+                  <!-- <th>选点标识</th> -->
+                  <th>选点内容</th>
+                  <th>文章位置</th>
+                  <!-- <th>点击复制</th> -->
+                  <!-- <th>事件</th> -->
+                  <th>颜色</th>
+                  <th>删除</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="__mtBP_configure_rows" v-for="(item, index) in selectedElList" :key="index">
+                  <td>{{index}}</td>
+                  <td>{{item.tagName}}</td>
+                  <td>
+                    <div class="__mtBP_configure_row_text">
+                      <input type="text" placeholder="输入内容" v-model="item.cssSelector"
+                        class="__mtBP_configure_input-text">
+                    </div>
+                  </td>
+                  <!-- <td>
                                 <div class="__mtBP_configure_row_text">
                                   <input type="text" placeholder="输入内容标识符" v-model="item.identifierFlg" class="__mtBP_configure_input-text">
                                 </div>
                               </td> -->
-                              <!-- 选择器内容 -->
-                              <td>
-                                <div class="__mtBP_configure_row_text">
-                                  <input  type="text" placeholder="输入内容" v-model="item.eleText" class="__mtBP_configure_input-text"
-                                  >
-                                  </div>
-                                </td>
-                                <!-- 文章位置选择 -->
-                              <td>
-                                <div class="__mtBP_configure_row_text">
-                                  <select v-model="item.titleKey" class="__mtBP_configure_select"  @change="changeProduct($event,item)">
-                                    <template v-for="titleKey in titleTypes">
-                                      <option :value="titleKey">{{titleKey}}</option>
-                                    </template>
-                                  </select>
-                              </td>
-                                  <!-- 复制按钮 -->
-                              <!-- <td>
+                  <!-- 选择器内容 -->
+                  <td>
+                    <div class="__mtBP_configure_row_text">
+                      <input type="text" placeholder="输入内容" v-model="item.eleText" class="__mtBP_configure_input-text">
+                    </div>
+                  </td>
+                  <!-- 文章位置选择 -->
+                  <td>
+                    <div class="__mtBP_configure_row_text">
+                      <select v-model="item.titleKey" class="__mtBP_configure_select"
+                        @change="changeProduct($event,item)">
+                        <template v-for="titleKey in titleTypes">
+                          <option :value="titleKey">{{titleKey}}</option>
+                        </template>
+                      </select>
+                  </td>
+                  <!-- 复制按钮 -->
+                  <!-- <td>
                                 <div class="__mtBP_configure_row_text"> -->
-                                  <!-- <input type="text" placeholder="输入元素选择器" v-model="item.cssSelector" class="__mtBP_configure_input-text"> -->
-                                  <!-- <button @click="copyDoc(item.eleText)">复制按钮</button>
+                  <!-- <input type="text" placeholder="输入元素选择器" v-model="item.cssSelector" class="__mtBP_configure_input-text"> -->
+                  <!-- <button @click="copyDoc(item.eleText)">复制按钮</button>
                                 </div>
                               </td> -->
-                              <!-- <td>
+                  <!-- <td>
                                 <div class="__mtBP_configure_row_text">
                                   <select v-model="item.eventType" class="__mtBP_configure_select">
                                     <template v-for="eventkey in eventTypes">
@@ -66,25 +86,26 @@
                                   </select>
                                 </div>
                               </td> -->
-                              <td  >
-                                <div class="__mtBP_configure_row_text" :style="'background-color:'+ item.color">
-                                  &nbsp;&nbsp;&nbsp;
-                                </div>
-                              </td>
-                              <td>
-                                <div class="actions">
-                                  <span @click="del(index)">X</span>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
+                  <td>
+                    <div class="__mtBP_configure_row_text" :style="'background-color:'+ item.color">
+                      &nbsp;&nbsp;&nbsp;
                     </div>
-                    <div v-if="selectedElList.length==0" style="text-align: center; margin: 10px; font-size: 16px;">您还没有设置要抓取内容</div>
-                </div>
-            </li>
-          <!--以保存到服务器元素集合-->
-          <!-- <li class="__mtBP_configure_item">
+                  </td>
+                  <td>
+                    <div class="actions">
+                      <span @click="del(index)">X</span>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div v-if="selectedElList.length==0" style="text-align: center; margin: 10px; font-size: 16px;">您还没有设置要抓取内容
+          </div>
+        </div>
+      </li>
+      <!--以保存到服务器元素集合-->
+      <!-- <li class="__mtBP_configure_item">
             <h4 class="selected">已上传元素<b>-</b></h4>
             <div class="__mtBP_configure_info" style="display: block;">
               <div v-if="saveServerElList.length>0">
@@ -130,6 +151,6 @@
               <div v-if="saveServerElList.length==0" style="text-align: center; margin: 10px; font-size: 16px;">您还未上传元素到服务器</div>
             </div>
           </li> -->
-        </ul>
-    </div>
+    </ul>
+  </div>
 </div>

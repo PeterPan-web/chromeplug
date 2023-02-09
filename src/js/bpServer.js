@@ -4,8 +4,10 @@ export default (function() {
   return {
     methods: {
       //内容选择上传上传
-      mtBpUpload: function(bp, sucBack, errBack) {
-        let url = this.mtBpServerUrl + "collect_war_exploded/task/getNodes";
+      mtBpUpload: function(mustip,bp, sucBack, errBack) {
+
+        // let url = this.mtBpServerUrl + "/collect/task/getNodes";
+        let url= mustip;
         $.ajax({
           type: "POST",
           // xhrFields: {
